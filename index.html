@@ -6,20 +6,23 @@
 <title>Dr.Harshavardhan — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FBFAF7;
-    --paper:#FFFFFF;
-    --ink:#17223B;
-    --ink-soft:#4E5A70;
-    --ink-faint:#8A93A6;
-    --accent:#2D6E62;
-    --accent-soft:#E7F0EC;
-    --gold:#B8863E;
-    --line:#DDD7C8;
-    --line-soft:#EAE6DA;
-    --serif: 'Source Serif 4', Georgia, serif;
+    --bg-dark:#0F1419;
+    --bg-secondary:#1A1F2E;
+    --bg-tertiary:#252B3A;
+    --paper:#1E2333;
+    --ink:#F5F7FA;
+    --ink-soft:#B8C0D0;
+    --ink-faint:#8A92A3;
+    --accent:#00D9FF;
+    --accent-alt:#FF6B9D;
+    --gold:#D4AF37;
+    --line:#2F3548;
+    --line-soft:#1F2635;
+    --success:#00C853;
+    --serif: 'Playfair Display', 'Source Serif 4', Georgia, serif;
     --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -34,16 +37,18 @@
 
   body{
     margin:0;
-    background:var(--bg);
+    background:var(--bg-dark);
     color:var(--ink);
     font-family:var(--sans);
     font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    background: linear-gradient(135deg, #0F1419 0%, #1A1F2E 50%, #0F1419 100%);
+    background-attachment: fixed;
   }
 
-  a{ color:var(--accent); text-decoration:none; }
-  a:hover{ text-decoration:underline; }
+  a{ color:var(--accent); text-decoration:none; transition: all 0.3s ease; }
+  a:hover{ color:var(--accent-alt); }
   a:focus-visible, button:focus-visible{
     outline:2px solid var(--accent);
     outline-offset:3px;
@@ -51,7 +56,7 @@
   }
 
   .wrap{
-    max-width:760px;
+    max-width:800px;
     margin:0 auto;
     padding:0 28px;
   }
@@ -59,63 +64,87 @@
   /* ---------- Top nav ---------- */
   .topnav{
     border-bottom:1px solid var(--line);
-    background:rgba(251,250,247,0.92);
-    backdrop-filter:blur(6px);
+    background:rgba(15, 20, 25, 0.85);
+    backdrop-filter:blur(8px);
     position:sticky;
     top:0;
     z-index:10;
+    box-shadow: 0 2px 20px rgba(0, 217, 255, 0.05);
   }
   .topnav .wrap{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding-top:14px;
-    padding-bottom:14px;
+    padding-top:16px;
+    padding-bottom:16px;
     gap:16px;
   }
   .topnav .brand{
     font-family:var(--serif);
-    font-weight:600;
-    font-size:1rem;
-    color:var(--ink);
+    font-weight:700;
+    font-size:1.2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     white-space:nowrap;
   }
   .topnav nav{
     display:flex;
-    gap:22px;
+    gap:24px;
     overflow-x:auto;
     scrollbar-width:none;
   }
   .topnav nav::-webkit-scrollbar{ display:none; }
   .topnav nav a{
     color:var(--ink-soft);
-    font-size:0.88rem;
+    font-size:0.9rem;
     white-space:nowrap;
+    font-weight: 500;
+    position: relative;
   }
+  .topnav nav a::after{
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .topnav nav a:hover::after{ width: 100%; }
   .topnav nav a:hover{ color:var(--accent); text-decoration:none; }
 
   /* ---------- Hero ---------- */
   .hero{
-    padding:64px 0 48px;
+    padding:80px 0 60px;
     border-bottom:1px solid var(--line);
+    background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(0, 217, 255, 0.08) 0%, transparent 100%);
   }
   .hero-grid{
     display:grid;
     grid-template-columns:auto 1fr;
-    gap:32px;
+    gap:40px;
     align-items:center;
   }
   .portrait{
-    width:132px;
-    height:132px;
-    border-radius:6px;
-    background:var(--accent-soft);
-    border:1px solid var(--line);
+    width:160px;
+    height:160px;
+    border-radius:12px;
+    background:linear-gradient(135deg, var(--bg-tertiary), var(--paper));
+    border:2px solid var(--line);
     display:flex;
     align-items:center;
     justify-content:center;
     overflow:hidden;
     flex-shrink:0;
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .portrait:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 217, 255, 0.25);
   }
   .portrait img{
     width:100%;
@@ -125,55 +154,63 @@
   }
   .portrait .placeholder-text{
     font-family:var(--sans);
-    font-size:0.68rem;
-    color:var(--accent);
+    font-size:0.75rem;
+    color:var(--ink-faint);
     text-align:center;
     padding:8px;
     line-height:1.35;
   }
   .hero h1{
     font-family:var(--serif);
-    font-weight:600;
-    font-size:2.15rem;
-    line-height:1.15;
-    margin:0 0 6px;
-    color:var(--ink);
+    font-weight:700;
+    font-size:3rem;
+    line-height:1.1;
+    margin:0 0 12px;
+    background: linear-gradient(135deg, var(--ink), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .hero .role-line{
-    font-size:1.02rem;
+    font-size:1.15rem;
     color:var(--accent);
-    font-weight:500;
-    margin:0 0 14px;
+    font-weight:600;
+    margin:0 0 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   .hero .tagline{
     font-family:var(--serif);
     font-style:italic;
-    font-size:1.15rem;
+    font-size:1.2rem;
     color:var(--ink-soft);
-    margin:0 0 18px;
-    max-width:46ch;
+    margin:0 0 20px;
+    max-width:50ch;
+    font-weight: 500;
   }
   .contact-row{
     display:flex;
     flex-wrap:wrap;
-    gap:4px 18px;
-    font-size:0.86rem;
+    gap:6px 20px;
+    font-size:0.9rem;
     color:var(--ink-soft);
   }
-  .contact-row a{ color:var(--ink-soft); }
-  .contact-row a:hover{ color:var(--accent); }
+  .contact-row a{ color:var(--accent); font-weight: 500; }
+  .contact-row a:hover{ color:var(--accent-alt); }
   .contact-row span.reg{
     color:var(--ink-faint);
+    font-size: 0.85rem;
   }
 
-  @media (max-width:560px){
+  @media (max-width:640px){
     .hero-grid{ grid-template-columns:1fr; text-align:left; }
-    .hero h1{ font-size:1.7rem; }
+    .hero h1{ font-size:2rem; }
+    .portrait{ width:120px; height:120px; }
   }
 
   /* ---------- Sections ---------- */
   section{
-    padding:44px 0;
+    padding:60px 0;
     border-bottom:1px solid var(--line);
   }
   section:last-of-type{ border-bottom:none; }
@@ -181,154 +218,187 @@
   .section-head{
     display:flex;
     align-items:baseline;
-    gap:14px;
-    margin-bottom:22px;
+    gap:16px;
+    margin-bottom:32px;
   }
   .section-head h2{
     font-family:var(--serif);
-    font-weight:600;
-    font-size:1.35rem;
+    font-weight:700;
+    font-size:2rem;
     margin:0;
     color:var(--ink);
   }
   .section-index{
     font-family:var(--serif);
     font-style:italic;
-    color:var(--ink-faint);
-    font-size:0.95rem;
+    color:var(--accent);
+    font-size:1.2rem;
+    font-weight: 600;
   }
 
   .lede{
-    font-size:1.02rem;
+    font-size:1.05rem;
     color:var(--ink-soft);
-    max-width:62ch;
+    max-width:65ch;
+    line-height: 1.8;
   }
 
   /* ---------- Competencies ---------- */
   .competency-list{
     display:flex;
     flex-wrap:wrap;
-    gap:9px;
+    gap:12px;
     list-style:none;
     padding:0;
     margin:0;
   }
   .competency-list li{
-    font-size:0.85rem;
-    color:var(--accent);
-    background:var(--accent-soft);
-    border:1px solid #D3E4DE;
-    padding:6px 12px;
-    border-radius:3px;
+    font-size:0.88rem;
+    color:var(--ink);
+    background:var(--bg-tertiary);
+    border:1px solid var(--accent);
+    padding:8px 14px;
+    border-radius:6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  .competency-list li:hover{
+    background: rgba(0, 217, 255, 0.1);
+    border-color: var(--accent-alt);
+    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.1);
   }
 
   /* ---------- Timeline (Experience) ---------- */
   .timeline{
     position:relative;
-    padding-left:26px;
+    padding-left:32px;
   }
   .timeline::before{
     content:"";
     position:absolute;
-    left:5px;
+    left:8px;
     top:6px;
     bottom:6px;
-    width:1px;
-    background:var(--line);
+    width:2px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-alt));
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
   }
   .tl-item{
     position:relative;
-    padding-bottom:34px;
+    padding-bottom:40px;
+    background:linear-gradient(135deg, rgba(30, 35, 51, 0.4) 0%, rgba(37, 43, 58, 0.4) 100%);
+    padding: 20px 24px;
+    padding-left: 40px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    transition: all 0.3s ease;
   }
-  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item:hover{
+    background:linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(255, 107, 157, 0.06) 100%);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.1);
+  }
+  .tl-item:last-child{ padding-bottom:20px; }
   .tl-item::before{
     content:"";
     position:absolute;
-    left:-26px;
-    top:5px;
-    width:9px;
-    height:9px;
+    left:-14px;
+    top:24px;
+    width:14px;
+    height:14px;
     border-radius:50%;
-    background:var(--paper);
-    border:2px solid var(--accent);
+    background:var(--bg-dark);
+    border:3px solid var(--accent);
+    box-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
   }
   .tl-date{
     font-size:0.8rem;
-    color:var(--ink-faint);
-    font-weight:500;
-    margin-bottom:3px;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   .tl-role{
     font-family:var(--serif);
-    font-size:1.08rem;
-    font-weight:600;
+    font-size:1.2rem;
+    font-weight:700;
     color:var(--ink);
-    margin:0 0 2px;
+    margin:0 0 4px;
   }
   .tl-org{
-    font-size:0.9rem;
-    color:var(--accent);
-    margin-bottom:8px;
+    font-size:0.95rem;
+    color:var(--accent-alt);
+    margin-bottom:12px;
+    font-weight: 600;
   }
   .tl-item ul{
     margin:0;
     padding-left:18px;
     color:var(--ink-soft);
-    font-size:0.93rem;
+    font-size:0.95rem;
+    line-height: 1.7;
   }
-  .tl-item li{ margin-bottom:5px; }
+  .tl-item li{ margin-bottom:6px; }
   .tl-item li:last-child{ margin-bottom:0; }
   .tl-badge{
     display:inline-block;
     font-size:0.72rem;
     color:var(--gold);
-    border:1px solid #E3D1AE;
-    background:#FBF4E7;
-    padding:2px 8px;
-    border-radius:3px;
-    margin-left:8px;
+    border:1px solid var(--gold);
+    background:rgba(212, 175, 55, 0.1);
+    padding:3px 10px;
+    border-radius:4px;
+    margin-left:10px;
     vertical-align:middle;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   /* ---------- Publications ---------- */
-  .pub-group{ margin-bottom:26px; }
+  .pub-group{ margin-bottom:28px; }
   .pub-group:last-child{ margin-bottom:0; }
   .pub-group h3{
-    font-size:0.78rem;
-    text-transform:none;
-    letter-spacing:0.01em;
-    color:var(--ink-faint);
-    font-weight:600;
-    margin:0 0 12px;
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--accent);
+    font-weight:700;
+    margin:0 0 14px;
   }
   .pub{
-    font-size:0.93rem;
+    font-size:0.95rem;
     color:var(--ink-soft);
-    margin-bottom:12px;
-    padding-left:16px;
-    border-left:2px solid var(--line-soft);
+    margin-bottom:14px;
+    padding:14px;
+    padding-left:18px;
+    border-left:3px solid var(--accent);
+    background: rgba(0, 217, 255, 0.03);
+    border-radius: 4px;
   }
   .pub:last-child{ margin-bottom:0; }
   .pub .pub-title{
     font-style:italic;
     color:var(--ink);
+    font-weight: 600;
   }
   .pub .pub-meta{
     display:block;
-    font-size:0.83rem;
+    font-size:0.85rem;
     color:var(--ink-faint);
-    margin-top:2px;
+    margin-top:4px;
   }
-  .pub .pub-meta a{ color:var(--accent); }
+  .pub .pub-meta a{ color:var(--accent); font-weight: 600; }
 
   /* ---------- Certifications & Education ---------- */
   .two-col{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:40px;
+    gap:50px;
   }
-  @media (max-width:640px){
-    .two-col{ grid-template-columns:1fr; gap:30px; }
+  @media (max-width:750px){
+    .two-col{ grid-template-columns:1fr; gap:40px; }
   }
   .cert-list{
     list-style:none;
@@ -336,30 +406,55 @@
     padding:0;
   }
   .cert-list li{
-    font-size:0.9rem;
+    font-size:0.93rem;
     color:var(--ink-soft);
-    padding:9px 0;
-    border-bottom:1px solid var(--line-soft);
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
   }
   .cert-list li:last-child{ border-bottom:none; }
-  .cert-list li strong{ color:var(--ink); font-weight:600; }
+  .cert-list li strong{ color:var(--accent); font-weight:700; }
 
-  .edu-item{ margin-bottom:18px; }
+  .edu-item{ 
+    margin-bottom:24px;
+    background: linear-gradient(135deg, rgba(30, 35, 51, 0.3) 0%, rgba(37, 43, 58, 0.3) 100%);
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+  }
   .edu-item:last-child{ margin-bottom:0; }
   .edu-item .deg{
     font-family:var(--serif);
-    font-weight:600;
-    font-size:1rem;
+    font-weight:700;
+    font-size:1.08rem;
     color:var(--ink);
   }
   .edu-item .inst{
-    font-size:0.88rem;
+    font-size:0.9rem;
     color:var(--accent);
-    margin:2px 0;
+    margin:4px 0;
+    font-weight: 600;
   }
   .edu-item .dates{
-    font-size:0.82rem;
+    font-size:0.85rem;
     color:var(--ink-faint);
+  }
+
+  /* ---------- Languages ---------- */
+  .lang-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+  }
+  .lang-item .lname{
+    font-family:var(--serif);
+    font-weight:700;
+    color:var(--ink);
+    font-size:1rem;
+  }
+  .lang-item .llevel{
+    font-size:0.85rem;
+    color:var(--accent);
+    font-weight: 600;
   }
 
   /* ---------- Achievements ---------- */
@@ -370,87 +465,102 @@
   }
   .achieve-list li{
     display:flex;
-    gap:12px;
-    font-size:0.93rem;
+    gap:14px;
+    font-size:0.95rem;
     color:var(--ink-soft);
-    padding:10px 0;
-    border-bottom:1px solid var(--line-soft);
+    padding:14px;
+    margin-bottom:10px;
+    border-radius: 6px;
+    background: rgba(0, 217, 255, 0.05);
+    border: 1px solid var(--line);
+    transition: all 0.3s ease;
   }
-  .achieve-list li:last-child{ border-bottom:none; }
+  .achieve-list li:hover{
+    background: rgba(0, 217, 255, 0.1);
+    border-color: var(--accent);
+  }
+  .achieve-list li:last-child{ margin-bottom:0; }
   .achieve-list li .mark{
     color:var(--gold);
     flex-shrink:0;
-    font-size:1.1rem;
-    line-height:1.3;
-  }
-
-  /* ---------- Languages ---------- */
-  .lang-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:26px;
-  }
-  .lang-item .lname{
-    font-family:var(--serif);
-    font-weight:600;
-    color:var(--ink);
-    font-size:0.95rem;
-  }
-  .lang-item .llevel{
-    font-size:0.8rem;
-    color:var(--ink-faint);
+    font-size:1.2rem;
+    line-height:1.2;
   }
 
   /* ---------- Footer ---------- */
   footer{
-    padding:40px 0 60px;
+    padding:60px 0 40px;
+    border-top:1px solid var(--line);
+    background: linear-gradient(180deg, rgba(15, 20, 25, 0.5), rgba(26, 31, 46, 0.8));
   }
   footer .foot-grid{
     display:flex;
     justify-content:space-between;
-    align-items:flex-end;
+    align-items:flex-start;
     flex-wrap:wrap;
-    gap:18px;
+    gap:30px;
   }
   footer h2{
     font-family:var(--serif);
-    font-weight:600;
-    font-size:1.35rem;
-    margin:0 0 10px;
+    font-weight:700;
+    font-size:1.8rem;
+    margin:0 0 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   footer p{
     color:var(--ink-soft);
-    font-size:0.93rem;
-    max-width:44ch;
+    font-size:0.95rem;
+    max-width:48ch;
     margin:0 0 16px;
+    line-height: 1.7;
   }
   .foot-links{
     display:flex;
     flex-direction:column;
-    gap:6px;
-    font-size:0.9rem;
+    gap:8px;
+    font-size:0.93rem;
+  }
+  .foot-links a{
+    font-weight: 600;
   }
   .foot-note{
-    margin-top:36px;
-    padding-top:18px;
+    margin-top:40px;
+    padding-top:24px;
     border-top:1px solid var(--line);
-    font-size:0.78rem;
+    font-size:0.8rem;
     color:var(--ink-faint);
   }
 
   .cta-btn{
     display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    font-size:0.88rem;
-    font-weight:500;
-    padding:10px 18px;
-    border-radius:3px;
-    margin-top:4px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+    color:#000;
+    font-size:0.9rem;
+    font-weight:700;
+    padding:12px 24px;
+    border-radius:6px;
+    margin-top:6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   .cta-btn:hover{
-    background:#245A50;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.4);
     text-decoration:none;
+  }
+
+  @media (max-width:768px){
+    .hero-grid{ gap: 24px; }
+    .hero h1{ font-size: 2.2rem; }
+    .section-head h2{ font-size: 1.6rem; }
+    .two-col{ gap: 30px; }
   }
 </style>
 </head>
@@ -458,7 +568,7 @@
 
 <div class="topnav">
   <div class="wrap">
-    <div class="brand"> Dr. Harsha vardhan</div>
+    <div class="brand"> Dr. Harsha Vardhan</div>
     <nav>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -476,13 +586,13 @@
       <div class="placeholder-text">Add photo<br>here</div>
     </div>
     <div>
-      <h1>Dr. Harsha vardhan</h1>
-      <p class="role-line">MD Pharmacology · Aspiring Medical Affairs Professional</p>
+      <h1>Dr. Harshavardhan</h1>
+      <p class="role-line">MD Pharmacology · Medical Affairs Professional</p>
       <p class="tagline">Bridging Clinical Evidence and Pharmaceutical Innovation</p>
       <div class="contact-row">
         <a href="mailto:drharsha3504@gmail.com">drharsha3504@gmail.com</a>
         <a href="tel:+919632297983">+91 96322 97983</a>
-        <a href="https://www.linkedin.com/in/drharshavardhan3504" target="_blank" rel="noopener">linkedin.com/in/drharshavardhan3504</a>
+        <a href="https://www.linkedin.com/in/drharshavardhan3504" target="_blank" rel="noopener">LinkedIn</a>
         <span class="reg">KMC Reg. No. 167489</span>
       </div>
     </div>
@@ -498,10 +608,10 @@
         <h2>About</h2>
       </div>
       <p class="lede">
-        Dr. Harshavardhan is a final-year MD Pharmacology resident at AIIMS Bibinagar, building a career at the intersection of clinical pharmacology and pharmaceutical Medical Affairs. His experience spans regulatory documentation and pharmacovigilance workflows from a Medical Affairs internship at Hetero Drugs Ltd., national recognition through the AstraZeneca Pharmasteer Medical Affairs Internship, and a top-ranked performance in McKinsey Forward. He combines hands-on clinical exposure — including antimicrobial resistance research and evidence synthesis (SRMA/NMA methodology) — with formal training in GCP, pharmacovigilance, and medical affairs practice (CPD certified). His work reflects a consistent focus on translating rigorous clinical evidence into actionable, guideline-aligned medical strategy.
+        Dr. Harshavardhan is a final-year MD Pharmacology resident at AIIMS Bibinagar, building a career at the intersection of clinical pharmacology and pharmaceutical Medical Affairs. His expertise spans regulatory strategy, scientific evidence synthesis, and cross-functional collaboration to drive clinical outcomes.
       </p>
 
-      <ul class="competency-list" style="margin-top:26px;">
+      <ul class="competency-list" style="margin-top:32px;">
         <li>KOL Engagement &amp; Peer-to-Peer Scientific Dialogue</li>
         <li>Field Medical Support &amp; Medical Affairs Strategy</li>
         <li>Pharmacovigilance, GCP &amp; GxP Principles</li>
@@ -549,7 +659,7 @@
           <h3 class="tl-role">Junior Resident, Department of Pharmacology</h3>
           <div class="tl-org">AIIMS Bibinagar, Hyderabad</div>
           <ul>
-            <li>Leading thesis research on antimicrobial resistance (AMR) trends in ESKAPE-E organisms, analyzing 2,009+ AST records — identifying, synthesizing, and reporting scientific findings for actionable clinical recommendations.</li>
+            <li>Leading thesis research on antimicrobial resistance (AMR) trends in ESKAPE-E organisms, analyzing 2,009+ AST records — identifying, synthesizing, and reporting scientific findings through peer-reviewed publications.</li>
             <li>Deliver academic teaching, prescription-writing exercises, and examination assessment for undergraduate medical students.</li>
             <li>Interpret antibiogram and MIC-based susceptibility data to support rational, evidence-based prescribing.</li>
           </ul>
@@ -647,7 +757,7 @@
             <div class="dates">Aug 2017 – Apr 2022</div>
           </div>
 
-          <ul class="lang-row" style="list-style:none; padding:0; margin-top:28px;">
+          <ul class="lang-row" style="list-style:none; padding:0; margin-top:32px;">
             <li class="lang-item">
               <div class="lname">English</div>
               <div class="llevel">Professional working</div>
@@ -689,10 +799,10 @@
         <h2>Achievements</h2>
       </div>
       <ul class="achieve-list">
-        <li><span class="mark">&#9679;</span><span>"Gattu N Sainath Award of Excellence" for best performance in the CPD 2025–26 batch</span></li>
-        <li><span class="mark">&#9679;</span><span>Prize Winner, E-Poster Competition, Jan Aushadhi Week, AIIMS Bibinagar</span></li>
-        <li><span class="mark">&#9679;</span><span>E-Poster Presentation, AIIMS Bibinagar Foundation Day — "Say Yes to Generic Medicines"</span></li>
-        <li><span class="mark">&#9679;</span><span>Intercollege Seminar on Drug Development Process, ESIC College, Hyderabad</span></li>
+        <li><span class="mark">★</span><span>"Gattu N Sainath Award of Excellence" for best performance in the CPD 2025–26 batch</span></li>
+        <li><span class="mark">★</span><span>Prize Winner, E-Poster Competition, Jan Aushadhi Week, AIIMS Bibinagar</span></li>
+        <li><span class="mark">★</span><span>E-Poster Presentation, AIIMS Bibinagar Foundation Day — "Say Yes to Generic Medicines"</span></li>
+        <li><span class="mark">★</span><span>Intercollege Seminar on Drug Development Process, ESIC College, Hyderabad</span></li>
       </ul>
     </div>
   </section>
@@ -705,7 +815,7 @@
       <div>
         <h2>Let's connect</h2>
         <p>Open to Regional Medical Advisor and Medical Science Liaison opportunities where clinical evidence meets field engagement.</p>
-        <a class="cta-btn" href="mailto:drharsha3504@gmail.com">Email Dr. Harshavardhan</a>
+        <a class="cta-btn" href="mailto:drharsha3504@gmail.com">Get In Touch</a>
       </div>
       <div class="foot-links">
         <a href="https://www.linkedin.com/in/drharshavardhan3504" target="_blank" rel="noopener">LinkedIn Profile</a>
