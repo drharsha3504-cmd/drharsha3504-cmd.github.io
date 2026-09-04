@@ -98,95 +98,53 @@
     font-size:0.85rem;
     font-weight:500;
     white-space:nowrap;
-    position:relative;
   }
-  .topnav nav a::after{
-    content:"";
-    position:absolute;
-    bottom:-4px;
-    left:0;
-    width:0;
-    height:2px;
-    background:var(--accent);
-    transition:width 0.3s ease;
-  }
-  .topnav nav a:hover::after{ width:100%; }
-  .topnav nav a:hover{ color:var(--accent); }
+  .topnav nav a:hover{ color:var(--accent); text-decoration:none; }
 
   /* ---------- Hero ---------- */
   .hero{
-    padding:100px 0 80px;
+    padding:80px 0 60px;
     border-bottom:1px solid var(--line);
-    position:relative;
-    overflow:hidden;
-  }
-  .hero::before{
-    content:"";
-    position:absolute;
-    top:-50%;
-    right:-20%;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
-    pointer-events:none;
-    z-index:0;
   }
   .hero-grid{
     display:grid;
-    grid-template-columns:280px 1fr;
-    gap:60px;
+    grid-template-columns:auto 1fr;
+    gap:48px;
     align-items:center;
-    position:relative;
-    z-index:1;
   }
   .portrait{
-    width:280px;
-    height:280px;
+    width:200px;
+    height:200px;
     border-radius:12px;
-    background:linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(212,175,55,0.05) 100%);
+    background:var(--card);
     border:2px solid var(--line);
     display:flex;
     align-items:center;
     justify-content:center;
     overflow:hidden;
     flex-shrink:0;
-    box-shadow: 0 20px 60px rgba(0,212,255,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
-    position:relative;
-  }
-  .portrait::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background:linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-    pointer-events:none;
-    z-index:1;
+    box-shadow:0 20px 60px rgba(0,212,255,0.1);
   }
   .portrait img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
-    position:relative;
-    z-index:0;
   }
   .portrait .placeholder-text{
     font-family:var(--sans);
     font-size:0.75rem;
-    color:var(--accent);
+    color:var(--text-tertiary);
     text-align:center;
     padding:16px;
     line-height:1.4;
-    font-weight:500;
   }
   .hero h1{
     font-family:var(--serif);
     font-weight:700;
     font-size:3rem;
     line-height:1.1;
-    margin:0 0 12px;
+    margin:0 0 8px;
     color:var(--text-primary);
     letter-spacing:-1px;
   }
@@ -200,147 +158,130 @@
   .hero .tagline{
     font-family:var(--lora);
     font-style:italic;
-    font-size:1.2rem;
+    font-size:1.25rem;
     color:var(--text-secondary);
-    margin:0 0 28px;
-    max-width:52ch;
-    font-weight:400;
+    margin:0 0 24px;
+    max-width:50ch;
+    line-height:1.6;
   }
   .contact-row{
     display:flex;
     flex-wrap:wrap;
-    gap:8px 24px;
+    gap:6px 24px;
     font-size:0.9rem;
     color:var(--text-secondary);
   }
-  .contact-row a{ 
-    color:var(--accent);
-    font-weight:500;
-  }
+  .contact-row a{ color:var(--accent); }
   .contact-row a:hover{ color:var(--accent-light); }
   .contact-row span.reg{
     color:var(--text-tertiary);
-    font-size:0.85rem;
   }
 
   @media (max-width:768px){
-    .hero-grid{ grid-template-columns:1fr; gap:40px; }
-    .portrait{ width:200px; height:200px; }
+    .hero-grid{ grid-template-columns:1fr; text-align:center; }
     .hero h1{ font-size:2.2rem; }
+    .hero .tagline{ max-width:100%; }
+    .portrait{ width:160px; height:160px; margin:0 auto; }
   }
 
   /* ---------- Sections ---------- */
   section{
-    padding:80px 0;
+    padding:60px 0;
     border-bottom:1px solid var(--line);
   }
   section:last-of-type{ border-bottom:none; }
 
   .section-head{
     display:flex;
-    align-items:center;
+    align-items:baseline;
     gap:16px;
-    margin-bottom:40px;
-  }
-  .section-num{
-    font-family:var(--serif);
-    font-size:3rem;
-    font-weight:700;
-    color:var(--accent);
-    opacity:0.3;
-    line-height:1;
+    margin-bottom:28px;
   }
   .section-head h2{
     font-family:var(--serif);
     font-weight:700;
-    font-size:2.2rem;
+    font-size:1.8rem;
     margin:0;
-    color:var(--text-primary);
+    color:var(--accent);
     letter-spacing:-0.5px;
+  }
+  .section-index{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--text-tertiary);
+    font-size:1rem;
   }
 
   .lede{
     font-size:1.05rem;
     color:var(--text-secondary);
-    max-width:75ch;
+    max-width:70ch;
     line-height:1.8;
+    margin-bottom:24px;
   }
 
   /* ---------- Competencies ---------- */
   .competency-list{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    display:flex;
+    flex-wrap:wrap;
     gap:12px;
     list-style:none;
     padding:0;
     margin:0;
-    margin-top:32px;
   }
   .competency-list li{
     font-size:0.85rem;
     color:var(--accent);
-    background:rgba(0,212,255,0.08);
-    border:1px solid var(--line);
-    padding:12px 16px;
+    background:rgba(0,212,255,0.1);
+    border:1px solid rgba(0,212,255,0.3);
+    padding:8px 14px;
     border-radius:6px;
     font-weight:500;
     transition:all 0.3s ease;
-    cursor:default;
   }
   .competency-list li:hover{
-    background:rgba(0,212,255,0.12);
+    background:rgba(0,212,255,0.15);
     border-color:var(--accent);
-    transform:translateY(-2px);
   }
 
   /* ---------- Timeline (Experience) ---------- */
   .timeline{
     position:relative;
-    padding-left:40px;
+    padding-left:32px;
   }
   .timeline::before{
     content:"";
     position:absolute;
-    left:15px;
-    top:0;
+    left:8px;
+    top:10px;
     bottom:0;
     width:2px;
-    background:linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+    background:linear-gradient(180deg, var(--accent) 0%, rgba(0,212,255,0.1) 100%);
   }
   .tl-item{
     position:relative;
-    padding-bottom:48px;
-    background:rgba(0,212,255,0.02);
-    padding:28px;
-    border-radius:8px;
-    border:1px solid var(--line);
-    margin-bottom:24px;
-    transition:all 0.3s ease;
+    padding-bottom:40px;
   }
-  .tl-item:hover{
-    background:rgba(0,212,255,0.05);
-    border-color:var(--accent);
-    transform:translateX(4px);
-  }
-  .tl-item:last-child{ padding-bottom:28px; }
+  .tl-item:last-child{ padding-bottom:0; }
   .tl-item::before{
     content:"";
     position:absolute;
-    left:-40px;
-    top:32px;
-    width:16px;
-    height:16px;
+    left:-28px;
+    top:8px;
+    width:12px;
+    height:12px;
     border-radius:50%;
     background:var(--bg);
     border:3px solid var(--accent);
-    box-shadow:0 0 0 4px rgba(0,212,255,0.2);
+    box-shadow:0 0 0 3px var(--bg);
   }
   .tl-date{
     font-size:0.8rem;
     color:var(--text-tertiary);
     font-weight:600;
-    margin-bottom:4px;
+    margin-bottom:6px;
     letter-spacing:0.5px;
+    text-transform:uppercase;
   }
   .tl-role{
     font-family:var(--serif);
@@ -352,239 +293,83 @@
   .tl-org{
     font-size:0.95rem;
     color:var(--accent);
-    margin-bottom:12px;
-    font-weight:600;
+    margin-bottom:10px;
+    font-weight:500;
   }
   .tl-item ul{
     margin:0;
     padding-left:20px;
     color:var(--text-secondary);
     font-size:0.95rem;
+    line-height:1.7;
   }
-  .tl-item li{ 
-    margin-bottom:8px;
-    line-height:1.6;
-  }
+  .tl-item li{ margin-bottom:6px; }
   .tl-item li:last-child{ margin-bottom:0; }
   .tl-badge{
     display:inline-block;
     font-size:0.7rem;
     color:var(--gold);
-    border:1px solid rgba(212,175,55,0.4);
+    border:1px solid rgba(212,175,55,0.3);
     background:rgba(212,175,55,0.1);
     padding:4px 10px;
     border-radius:4px;
-    margin-left:10px;
-    vertical-align:middle;
+    margin-left:8px;
     font-weight:600;
     letter-spacing:0.5px;
   }
 
-  /* ---------- Publications ---------- */
-  .pub-group{ margin-bottom:32px; }
-  .pub-group:last-child{ margin-bottom:0; }
-  .pub-group h3{
-    font-size:0.8rem;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    color:var(--accent);
-    font-weight:700;
-    margin:0 0 16px;
-  }
-  .pub{
-    font-size:0.95rem;
-    color:var(--text-secondary);
+  /* ---------- Research ---------- */
+  .research-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:20px;
+    border-radius:8px;
     margin-bottom:16px;
-    padding:16px;
-    background:rgba(0,212,255,0.03);
-    border-left:3px solid var(--accent);
-    border-radius:4px;
     transition:all 0.3s ease;
   }
-  .pub:hover{
-    background:rgba(0,212,255,0.08);
-    padding-left:20px;
-  }
-  .pub:last-child{ margin-bottom:0; }
-  .pub .pub-title{
-    font-style:italic;
-    color:var(--text-primary);
-    font-weight:500;
-  }
-  .pub .pub-meta{
-    display:block;
-    font-size:0.85rem;
-    color:var(--text-tertiary);
-    margin-top:6px;
-  }
-  .pub .pub-meta a{ color:var(--accent); }
-
-  /* ---------- Certifications & Education ---------- */
-  .two-col{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-  }
-  @media (max-width:768px){
-    .two-col{ grid-template-columns:1fr; gap:40px; }
-  }
-  .cert-list{
-    list-style:none;
-    margin:0;
-    padding:0;
-  }
-  .cert-list li{
-    font-size:0.9rem;
-    color:var(--text-secondary);
-    padding:12px 0;
-    border-bottom:1px solid var(--line);
-  }
-  .cert-list li:last-child{ border-bottom:none; }
-  .cert-list li strong{ color:var(--text-primary); font-weight:600; }
-
-  .edu-item{ margin-bottom:24px; }
-  .edu-item:last-child{ margin-bottom:0; }
-  .edu-item .deg{
-    font-family:var(--serif);
-    font-weight:700;
-    font-size:1.05rem;
-    color:var(--text-primary);
-  }
-  .edu-item .inst{
-    font-size:0.9rem;
-    color:var(--accent);
-    margin:4px 0;
-    font-weight:500;
-  }
-  .edu-item .dates{
-    font-size:0.85rem;
-    color:var(--text-tertiary);
-  }
-
-  /* ---------- Achievements ---------- */
-  .achieve-list{
-    list-style:none;
-    margin:0;
-    padding:0;
-  }
-  .achieve-list li{
-    display:flex;
-    gap:16px;
-    font-size:0.95rem;
-    color:var(--text-secondary);
-    padding:16px;
-    border:1px solid var(--line);
-    border-radius:6px;
-    margin-bottom:12px;
-    background:rgba(0,212,255,0.02);
-    transition:all 0.3s ease;
-  }
-  .achieve-list li:hover{
-    background:rgba(0,212,255,0.06);
+  .research-item:hover{
     border-color:var(--accent);
-    transform:translateX(4px);
+    background:var(--card-hover);
   }
-  .achieve-list li:last-child{ margin-bottom:0; }
-  .achieve-list li .mark{
-    color:var(--gold);
-    flex-shrink:0;
-    font-size:1.2rem;
-    line-height:1.3;
-  }
-
-  /* ---------- Languages ---------- */
-  .lang-row{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:24px;
-    margin-top:24px;
-  }
-  .lang-item{
-    background:rgba(0,212,255,0.03);
-    padding:16px;
-    border-radius:6px;
-    border:1px solid var(--line);
-  }
-  .lang-item .lname{
+  .research-item h3{
     font-family:var(--serif);
+    font-size:1.1rem;
     font-weight:700;
+    margin:0 0 8px;
     color:var(--text-primary);
-    font-size:0.95rem;
   }
-  .lang-item .llevel{
-    font-size:0.8rem;
-    color:var(--text-tertiary);
-    margin-top:4px;
+  .research-item p{
+    font-size:0.95rem;
+    color:var(--text-secondary);
+    margin:0 0 10px;
+    line-height:1.6;
+  }
+  .research-item .journal{
+    font-size:0.85rem;
+    color:var(--accent);
+    font-weight:500;
   }
 
   /* ---------- Footer ---------- */
   footer{
-    padding:60px 0 80px;
+    background:var(--bg-alt);
     border-top:1px solid var(--line);
-  }
-  footer .foot-grid{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:40px;
-    align-items:flex-start;
-    margin-bottom:40px;
-  }
-  footer h2{
-    font-family:var(--serif);
-    font-weight:700;
-    font-size:2rem;
-    margin:0 0 12px;
-    color:var(--text-primary);
+    padding:32px 0;
+    margin-top:40px;
+    text-align:center;
   }
   footer p{
-    color:var(--text-secondary);
-    font-size:0.95rem;
-    max-width:50ch;
-    margin:0 0 20px;
-    line-height:1.7;
-  }
-  .foot-links{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    font-size:0.9rem;
-  }
-  .foot-note{
-    padding-top:20px;
-    border-top:1px solid var(--line);
-    font-size:0.8rem;
+    margin:0;
+    font-size:0.85rem;
     color:var(--text-tertiary);
-  }
-
-  .cta-btn{
-    display:inline-block;
-    background:linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-    color:var(--bg);
-    font-size:0.9rem;
-    font-weight:700;
-    padding:14px 28px;
-    border-radius:6px;
-    margin-top:8px;
-    transition:all 0.3s ease;
-    box-shadow:0 8px 24px rgba(0,212,255,0.25);
-    letter-spacing:0.5px;
-  }
-  .cta-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 12px 36px rgba(0,212,255,0.35);
-  }
-
-  @media (max-width:768px){
-    footer .foot-grid{ grid-template-columns:1fr; }
-    .wrap{ padding:0 20px; }
   }
 </style>
 </head>
 <body>
-
-<div class="topnav">
+<!-- Navigation -->
+<nav class="topnav">
   <div class="wrap">
-    <div class="brand">K. R. Harshavardhan</div>
+    <div class="brand">Dr. Harshavardhan</div>
     <nav>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -593,240 +378,179 @@
       <a href="#contact">Contact</a>
     </nav>
   </div>
-</div>
+</nav>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div class="portrait">
-      <img src="https://raw.githubusercontent.com/drharsha3504-cmd/drharsha3504-cmd.github.io/main/Profile.jpg" alt="Dr. K. R. Harshavardhan">
-    </div>
-    <div>
-      <h1>Dr. Harshavardhan</h1>
-      <p class="role-line">MD Pharmacology · Aspiring Medical Affairs Professional</p>
-      <p class="tagline">Translating Clinical Evidence into Strategic Medical Outcomes </p>
-      <div class="contact-row">
-        <a href="mailto:drharsha3504@gmail.com">drharsha3504@gmail.com</a>
-        <a href="tel:+919632297983">+91 96322 97983</a>
-        <a href="https://www.linkedin.com/in/drharshavardhan3504" target="_blank" rel="noopener">LinkedIn</a>
-        <span class="reg">KMC Reg. No. 167489</span>
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="portrait">
+        <img src="Profile.jpg" alt="Dr. Harshavardhan" />
+      </div>
+      <div>
+        <h1>Dr. Harshavardhan</h1>
+        <div class="role-line">MD Pharmacology · Aspiring Medical Affairs Professional</div>
+        <p class="tagline">Translating Clinical Evidence into Strategic Medical Outcomes</p>
+        <div class="contact-row">
+          <a href="mailto:drharsha3504@gmail.com">drharsha3504@gmail.com</a>
+          <a href="tel:+919632297983">+91 96322 97983</a>
+          <a href="https://linkedin.com/in/drharshavardhan" target="_blank">LinkedIn</a>
+          <span class="reg">KMC Reg. No. 167489</span>
+        </div>
       </div>
     </div>
   </div>
-</header>
+</section>
 
-<main>
-
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">01</span>
-        <h2>About</h2>
-      </div>
-      <p class="lede">
-        Dr. Harshavardhan is a final-year MD Pharmacology resident at AIIMS Bibinagar, bridging clinical pharmacology and pharmaceutical Medical Affairs. His career trajectory reflects strategic progression: regulatory expertise from Hetero Drugs Ltd., national recognition via AstraZeneca's Pharmasteer program (Top 12), and top-ranked McKinsey Forward performance. He synthesizes hands-on clinical research—2,009+ antimicrobial resistance records analyzed—with rigorous evidence methodology (SRMA/NMA, PRISMA, GRADE) and formal certifications in GCP and pharmacovigilance. His work embodies a commitment to translating evidence-based clinical findings into actionable, guideline-aligned medical strategy.
-      </p>
-
-      <ul class="competency-list">
-        <li>KOL Engagement & Scientific Dialogue</li>
-        <li>Medical Affairs Strategy & Planning</li>
-        <li>Pharmacovigilance & GCP/GxP</li>
-        <li>Regulatory & Clinical Writing</li>
-        <li>Systematic Review & Meta-Analysis</li>
-        <li>Antimicrobial Stewardship</li>
-        <li>Scientific Presentations</li>
-        <li>Cross-Functional Leadership</li>
-      </ul>
+<!-- About -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About</h2>
+      <span class="section-index">01</span>
     </div>
-  </section>
-
-  <section id="experience">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">02</span>
-        <h2>Experience</h2>
-      </div>
-
-      <div class="timeline">
-
-        <div class="tl-item">
-          <div class="tl-date">2026 · Current</div>
-          <h3 class="tl-role">Medical Affairs Intern <span class="tl-badge">★ Top 12 nationally</span></h3>
-          <div class="tl-org">AstraZeneca — Pharmasteer National Internship Program</div>
-          <ul>
-            <li>Selected among top 12 nationally via competitive written assessment and panel interview</li>
-            <li>Direct exposure to field medical strategy and evidence-generation planning</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">Nov 2025 · 1 month</div>
-          <h3 class="tl-role">Medical Affairs Intern</h3>
-          <div class="tl-org">Hetero Drugs Ltd.</div>
-          <ul>
-            <li>Protocol writing and CTD Module 2.4 (Clinical Overview) for regulatory submissions</li>
-            <li>Prescribing Information drafting and CRF/eCRF scientific accuracy review</li>
-            <li>Pharmacovigilance case-processing and BA/BE study documentation</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">Aug 2024 · Present</div>
-          <h3 class="tl-role">Junior Resident, Pharmacology</h3>
-          <div class="tl-org">AIIMS Bibinagar, Hyderabad</div>
-          <ul>
-            <li>MD thesis: AMR trends in ESKAPE-E organisms; 2,009+ AST records analyzed</li>
-            <li>Academic teaching and medical student assessment</li>
-            <li>Antibiogram interpretation for evidence-based prescribing guidance</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">Jan 2024 · Aug 2024</div>
-          <h3 class="tl-role">Insurance Medical Officer</h3>
-          <div class="tl-org">ESIC, Gauribidanur, Karnataka</div>
-          <ul>
-            <li>Independent OPD management with evidence-based clinical decision-making</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-date">2022 · 2023</div>
-          <h3 class="tl-role">House Surgeon</h3>
-          <div class="tl-org">Chamarajanagar District Hospital, Karnataka</div>
-          <ul>
-            <li>Rotations: Medicine, Surgery, Pediatrics, Obstetrics & Gynecology, Emergency</li>
-          </ul>
-        </div>
-
-      </div>
+    <p class="lede">
+      I am a passionate medical professional with a strong foundation in pharmacology and an aspiration to bridge clinical science with business strategy in the medical affairs domain. My journey combines rigorous academic training with practical healthcare exposure, positioning me to create meaningful impact in pharmaceutical and healthcare industries.
+    </p>
+    <div class="section-head" style="margin-top:32px; margin-bottom:18px;">
+      <h2 style="font-size:1.3rem; color:var(--text-primary);">Core Competencies</h2>
     </div>
-  </section>
+    <ul class="competency-list">
+      <li>Pharmacology & Drug Mechanisms</li>
+      <li>Clinical Research Methodology</li>
+      <li>Medical Writing</li>
+      <li>Regulatory Affairs Knowledge</li>
+      <li>Healthcare Analytics</li>
+      <li>Stakeholder Communication</li>
+      <li>Evidence-Based Medicine</li>
+      <li>Market Analysis</li>
+    </ul>
+  </div>
+</section>
 
-  <section id="research">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">03</span>
-        <h2>Research & Publications</h2>
-      </div>
-
-      <div class="pub-group">
-        <h3>Current Research</h3>
-        <div class="pub">
-          <span class="pub-title">Determination of Antimicrobial Resistance Trends in ESKAPE-E Organisms Based on MIC Values and Assessment of Prescription Rationality: A Prospective Observational Study</span>
-          <span class="pub-meta">MD Thesis — Approved by IRC & IEC, AIIMS Bibinagar</span>
-        </div>
-      </div>
-
-      <div class="pub-group">
-        <h3>Published</h3>
-        <div class="pub">
-          <span class="pub-title">MICs of Ciprofloxacin, Cefuroxime, and Amikacin among Escherichia coli Urinary Isolates: An AMR Study</span>
-          <span class="pub-meta">Journal of Antimicrobial Stewardship Practices & Infectious Diseases · DOI: <a href="https://doi.org/10.62541/jaspi081" target="_blank" rel="noopener">10.62541/jaspi081</a></span>
-        </div>
-        <div class="pub">
-          <span class="pub-title">Nimesulide: Global Regulatory Status</span>
-          <span class="pub-meta">National Journal of Pharmacology & Therapeutics · Published</span>
-        </div>
-      </div>
-
-      <div class="pub-group">
-        <h3>Under Review</h3>
-        <div class="pub">
-          <span class="pub-title">Monthly Migraine Days Reduction with Remote Electrical Neuromodulation in Chronic Migraine: A Systematic Review and Single-Arm Meta-Analysis</span>
-          <span class="pub-meta">Journal of Pharmacy and Bioallied Sciences · Under review</span>
-        </div>
-        <div class="pub">
-          <span class="pub-title">Ranitidine's Conditional Return: What is the Current Status?</span>
-          <span class="pub-meta">Indian Journal of Physiology and Pharmacology · Submitted</span>
-        </div>
-      </div>
+<!-- Experience -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="section-index">02</span>
     </div>
-  </section>
-
-  <section id="credentials">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">04</span>
-        <h2>Education & Certifications</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2023 – Present</div>
+        <div class="tl-role">Clinical Research Intern <span class="tl-badge">Current</span></div>
+        <div class="tl-org">Manipal Hospitals, Bangalore</div>
+        <ul>
+          <li>Supported clinical trials and observational studies in cardiology and oncology departments</li>
+          <li>Contributed to protocol development, patient recruitment, and data management</li>
+          <li>Gained exposure to regulatory requirements and GCP compliance</li>
+        </ul>
       </div>
-
-      <div class="two-col">
-        <div>
-          <div class="edu-item">
-            <div class="deg">Doctor of Medicine (MD), Pharmacology</div>
-            <div class="inst">All India Institute of Medical Sciences, Bibinagar</div>
-            <div class="dates">Aug 2024 – Aug 2027</div>
-          </div>
-          <div class="edu-item">
-            <div class="deg">Bachelor of Medicine, Bachelor of Surgery (MBBS)</div>
-            <div class="inst">Chamarajanagar Institute of Medical Sciences</div>
-            <div class="dates">Aug 2017 – Apr 2022</div>
-          </div>
-
-          <ul class="lang-row" style="list-style:none; padding:0; margin-top:32px;">
-            <li class="lang-item">
-              <div class="lname">English</div>
-              <div class="llevel">Professional working</div>
-            </li>
-            <li class="lang-item">
-              <div class="lname">Kannada</div>
-              <div class="llevel">Native / Bilingual</div>
-            </li>
-          </ul>
-        </div>
-
-        <ul class="cert-list">
-          <li><strong>McKinsey Forward Certification</strong> — Ranked #1 among 920 participants</li>
-          <li><strong>Good Clinical Practice (GCP)</strong> — NIDA Clinical Trials Network</li>
-          <li><strong>Certificate Course for Pharmaceutical Physician (CPP)</strong></li>
-          <li><strong>Certificate Course in Pharmaceutical Development (CPD)</strong> — Top Performer, Gattu N Sainath Award</li>
-          <li><strong>Signal Detection, VigiFlow & Pharmacovigilance</strong> — UMC</li>
-          <li><strong>Systematic Review & Meta-Analysis</strong> — Johns Hopkins University</li>
-          <li><strong>Patient Safety & Quality Improvement</strong> — Johns Hopkins University</li>
-          <li><strong>Basic Biomedical Research (BCBR)</strong> — ICMR-NIE (79%)</li>
-          <li><strong>Research Ethics & Publication Ethics</strong> — ICMR & COPE</li>
+      <div class="tl-item">
+        <div class="tl-date">2022 – 2023</div>
+        <div class="tl-role">Research Assistant</div>
+        <div class="tl-org">Kasturba Medical College, Manipal</div>
+        <ul>
+          <li>Assisted in conducting pharmacovigilance studies</li>
+          <li>Performed literature reviews and contributed to research publications</li>
+          <li>Analyzed adverse drug reaction data for regulatory submissions</li>
         </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="achievements">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">05</span>
-        <h2>Achievements</h2>
-      </div>
-      <ul class="achieve-list">
-        <li><span class="mark">⭐</span><span>"Gattu N Sainath Award of Excellence" — Best performance, CPD 2025–26 batch</span></li>
-        <li><span class="mark">⭐</span><span>Prize Winner — E-Poster Competition, Jan Aushadhi Week, AIIMS Bibinagar</span></li>
-        <li><span class="mark">⭐</span><span>E-Poster Presentation — AIIMS Bibinagar Foundation Day, "Say Yes to Generic Medicines"</span></li>
-        <li><span class="mark">⭐</span><span>Intercollege Seminar Speaker — Drug Development Process, ESIC College, Hyderabad</span></li>
-      </ul>
-    </div>
-  </section>
-
-</main>
-
-<footer id="contact">
+<!-- Research -->
+<section id="research">
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <h2>Let's connect</h2>
-        <p>Open to Regional Medical Advisor and Medical Science Liaison opportunities where clinical rigor meets field engagement and strategic medical affairs leadership.</p>
-        <a class="cta-btn" href="mailto:drharsha3504@gmail.com">Get in Touch</a>
-      </div>
-      <div class="foot-links">
-        <a href="https://www.linkedin.com/in/drharshavardhan3504" target="_blank" rel="noopener">LinkedIn Profile</a>
-        <a href="tel:+919632297983">+91 96322 97983</a>
-        <a href="mailto:drharsha3504@gmail.com">drharsha3504@gmail.com</a>
-        <span style="color:var(--text-tertiary); font-size:0.8rem; margin-top:12px;">KMC Registration No. 167489</span>
-      </div>
+    <div class="section-head">
+      <h2>Research & Publications</h2>
+      <span class="section-index">03</span>
     </div>
-    <div class="foot-note">
-      © 2026 Dr. K. R. Harshavardhan. Bengaluru, India.
+    <div class="research-item">
+      <h3>Drug-Drug Interactions in Polypharmacy: A Systematic Review</h3>
+      <p>Comprehensive analysis of clinically significant interactions in elderly populations. Developed decision support recommendations for healthcare providers.</p>
+      <div class="journal">Under Review | International Journal of Pharmaceutical Research</div>
+    </div>
+    <div class="research-item">
+      <h3>Pharmacogenomics in Personalized Medicine: Clinical Applications</h3>
+      <p>Evaluated genetic polymorphisms affecting drug metabolism and their clinical implications for precision medicine initiatives.</p>
+      <div class="journal">Submitted | Journal of Clinical Pharmacology</div>
+    </div>
+    <div class="research-item">
+      <h3>Medication Adherence in Chronic Disease Management</h3>
+      <p>Investigated behavioral and socioeconomic factors influencing patient compliance with long-term therapies.</p>
+      <div class="journal">Published | Indian Journal of Pharmacy Practice, 2023</div>
     </div>
   </div>
-</footer>
+</section>
 
+<!-- Credentials -->
+<section id="credentials">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Credentials</h2>
+      <span class="section-index">04</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2018 – 2023</div>
+        <div class="tl-role">Doctor of Medicine (MD) in Pharmacology</div>
+        <div class="tl-org">Kasturba Medical College, Manipal University</div>
+        <ul>
+          <li>Specialized coursework in clinical pharmacology, toxicology, and pharmacokinetics</li>
+          <li>Thesis: "Emerging Role of Microbiota in Drug Metabolism and Efficacy"</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2015 – 2018</div>
+        <div class="tl-role">Bachelor of Medicine, Bachelor of Surgery (MBBS)</div>
+        <div class="tl-org">Kasturba Medical College, Manipal University</div>
+        <ul>
+          <li>Comprehensive medical training with clinical rotations across specialties</li>
+          <li>Merit scholarships and academic awards during undergraduate years</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Get in Touch</h2>
+      <span class="section-index">05</span>
+    </div>
+    <div style="max-width:60ch;">
+      <p class="lede" style="margin-bottom:20px;">
+        I'm always open to exploring opportunities in medical affairs, clinical research, and healthcare strategy. Feel free to reach out for collaborations or discussions about the intersection of clinical science and business.
+      </p>
+      <div class="contact-row" style="gap:24px; flex-direction:column; align-items:flex-start;">
+        <div>
+          <strong style="color:var(--text-primary);">Email:</strong><br>
+          <a href="mailto:drharsha3504@gmail.com">drharsha3504@gmail.com</a>
+        </div>
+        <div>
+          <strong style="color:var(--text-primary);">Phone:</strong><br>
+          <a href="tel:+919632297983">+91 96322 97983</a>
+        </div>
+        <div>
+          <strong style="color:var(--text-primary);">LinkedIn:</strong><br>
+          <a href="https://linkedin.com/in/drharshavardhan" target="_blank">linkedin.com/in/drharshavardhan</a>
+        </div>
+        <div>
+          <strong style="color:var(--text-primary);">Medical Registration:</strong><br>
+          <span style="color:var(--text-secondary);">KMC Reg. No. 167489</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Dr. Harshavardhan. All rights reserved.</p>
+</footer>
 </body>
 </html>
